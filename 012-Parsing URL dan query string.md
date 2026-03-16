@@ -180,4 +180,19 @@ Tapi untuk pembelajaran dasar—dan kompatibilitas luas—`url.parse(url, true)`
 
 ---
 
+const hasil = [
+    {nama: 'Laptop XYZ', harga: 4500000},
+    {nama: 'HP ABC', harga: 3000000}
+].filter(item => {
+    // Filter berdasarkan kategori
+    const matchKategori = kategori === 'semua' || 
+                         item.nama.toLowerCase().includes(kategori.toLowerCase());
+    
+    // Filter berdasarkan harga_max (jika ada)
+    const matchHarga = !harga_max || item.harga <= parseInt(harga_max);
+    
+    // Item lolos jika kedua kondisi terpenuhi
+    return matchKategori && matchHarga;
+});
+
 **Kesimpulannya**, memahami cara parsing URL dan query string adalah keterampilan wajib bagi developer backend. Ini adalah fondasi bagaimana API menerima parameter dari klien—entah itu filter pencarian, pagination, atau kredensial sederhana. Dengan hanya dua baris kode (`url.parse` + destructuring), kamu sudah bisa mengubah string acak di URL menjadi data terstruktur yang siap diproses. Dan yang terpenting: **kamu tahu persis apa yang terjadi di balik layar**, bukan hanya mengandalkan “magic” dari framework. Karena di dunia backend, **data yang masuk harus selalu dipahami—bukan hanya diterima**.
